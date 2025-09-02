@@ -1,0 +1,32 @@
+2025-09-01 18:27:44 WARN  DriverFactory:214 - env is null, hence running the tests on QA env by default...
+2025-09-01 18:27:44 INFO  DriverFactory:42 - properties:  {headless=false, //=only configuration details here in the config.properties, highlight=false, password=Selenium@12345, browser=chrome, incognito=false, url=https://naveenautomationlabs.com/opencart/index.php?route=account/login, //toggle=features for headless incognito and highlight, username=march2024@open.com}
+2025-09-01 18:27:44 INFO  DriverFactory:45 - Browser name is : chrome
+2025-09-01 18:27:52 INFO  DriverFactory:12 - ------Starting test case ----LoginPage Test
+2025-09-01 18:27:53 INFO  DriverFactory:12 - ------Starting test case ----LoginPage Test
+2025-09-01 18:27:53 INFO  DriverFactory:12 - ------Starting test case ----LoginPage Test
+2025-09-01 18:27:53 INFO  DriverFactory:12 - ------Starting test case ----LoginPage Test
+2025-09-01 19:28:45 WARN  DriverFactory:214 - env is null, hence running the tests on QA env by default...
+2025-09-01 19:28:45 INFO  DriverFactory:42 - properties:  {headless=false, //=only configuration details here in the config.properties, highlight=false, password=Selenium@12345, browser=chrome, incognito=false, url=https://naveenautomationlabs.com/opencart/index.php?route=account/login, //toggle=features for headless incognito and highlight, username=march2024@open.com}
+2025-09-01 19:28:45 INFO  DriverFactory:45 - Browser name is : chrome
+2025-09-01 19:51:21 WARN  DriverFactory:214 - env is null, hence running the tests on QA env by default...
+2025-09-01 19:51:21 WARN  DriverFactory:214 - env is null, hence running the tests on QA env by default...
+2025-09-01 19:51:21 INFO  DriverFactory:42 - properties:  {headless=false, //=only configuration details here in the config.properties, highlight=false, password=Selenium@12345, browser=chrome, incognito=false, url=https://naveenautomationlabs.com/opencart/index.php?route=account/login, //toggle=features for headless incognito and highlight, username=march2024@open.com}
+2025-09-01 19:51:21 INFO  DriverFactory:42 - properties:  {headless=false, //=only configuration details here in the config.properties, highlight=false, password=Selenium@12345, browser=chrome, incognito=false, url=https://naveenautomationlabs.com/opencart/index.php?route=account/login, //toggle=features for headless incognito and highlight, username=march2024@open.com}
+2025-09-01 19:51:21 INFO  DriverFactory:45 - Browser name is : chrome
+2025-09-01 19:51:21 INFO  DriverFactory:45 - Browser name is : chrome
+2025-09-01 19:51:37 INFO  AccountsPage:65 - Account page headers list : [My Account, My Orders, My Affiliate Account, Newsletter]
+2025-09-01 19:51:37 INFO  AccountsPage:42 - Home page title:  My Account
+2025-09-01 19:51:37 INFO  AccountsPage:50 - Home page url is :  https://naveenautomationlabs.com/opencart/index.php?route=account/account
+2025-09-01 19:51:39 INFO  AccountsPage:42 - Home page title:  My Account
+2025-09-01 22:09:52 WARN  DriverFactory:214 - env is null, hence running the tests on QA env by default...
+2025-09-01 22:09:52 INFO  DriverFactory:42 - properties:  {headless=false, //=only configuration details here in the config.properties, highlight=false, password=Selenium@12345, browser=chrome, incognito=false, url=https://naveenautomationlabs.com/opencart/index.php?route=account/login, //toggle=features for headless incognito and highlight, username=march2024@open.com}
+2025-09-01 22:09:52 INFO  DriverFactory:45 - Browser name is : chrome
+2025-09-01 22:09:53 WARN  DriverFactory:214 - env is null, hence running the tests on QA env by default...
+2025-09-01 22:09:53 INFO  DriverFactory:42 - properties:  {headless=false, //=only configuration details here in the config.properties, highlight=false, password=Selenium@12345, browser=chrome, incognito=false, url=https://naveenautomationlabs.com/opencart/index.php?route=account/login, //toggle=features for headless incognito and highlight, username=march2024@open.com}
+2025-09-01 22:09:53 INFO  DriverFactory:45 - Browser name is : chrome
+2025-09-01 22:13:01 INFO  AccountsPage:42 - Home page title:  My Account
+2025-09-01 22:13:01 INFO  BaseTest:104 - ----closing the browser-----
+2025-09-01 22:13:12 INFO  AccountsPage:65 - Account page headers list : []
+2025-09-01 22:13:13 INFO  AccountsPage:42 - Home page title:  My Account
+2025-09-01 22:13:13 INFO  AccountsPage:50 - Home page url is :  https://naveenautomationlabs.com/opencart/index.php?route=account/account
+2025-09-01 22:13:13 INFO  BaseTest:104 - ----closing the browser-----
