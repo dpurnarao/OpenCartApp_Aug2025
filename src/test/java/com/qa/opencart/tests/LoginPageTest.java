@@ -67,7 +67,7 @@ public class LoginPageTest extends BaseTest {
 		Assert.assertTrue(forgotPwdLink);
 	}
 	
-	@Description("Verify opencard login page test")
+	@Description("Verify opencard login page test..... opencart")
 	@Severity(SeverityLevel.CRITICAL)
 	@Owner("Purna")
 	@Test(priority = Short.MAX_VALUE)
