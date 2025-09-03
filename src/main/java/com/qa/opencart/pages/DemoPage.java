@@ -7,5 +7,11 @@ public class DemoPage {
 		System.out.println(" f1 feature v1.0");
 
 	}
+	
+public void f2() {
+		
+		System.out.println(" f2 feature v2.0");
+
+	}
 
 }
