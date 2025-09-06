@@ -1,39 +1,31 @@
 pipeline 
 {
     agent any
-       stages 
+    
+    tools{
+        maven 'maven'
+        }
+
+    stages 
     {
-        stage("Build") 
+        stage('Build') 
         {
             steps
             {
-                echo("build the project")
+                 git 'https://github.com/jglick/simple-maven-project-with-tests.git'
+                 bat "mvn -Dmaven.test.failure.ignore=true clean package"
             }
-        }    
+            post 
+            {
+                success
+                {
+                    junit '**/target/surefire-reports/TEST-*.xml'
+                    archiveArtifacts 'target/*.jar'
+                }
+            }
+        }
         
-        stage("Run unite test") 
-        {
-            steps
-            {
-                echo("run unit tests")
-            }
-        }  
         
-        stage("Run Integration test") 
-        {
-            steps
-            {
-                echo("run integration tests")
-            }
-        }   
-        
-        stage("Deploy to Dev environment") 
-        {
-            steps
-            {
-                echo("deploy to Dev")
-            }
-        }  
         
         stage("Deploy to QA"){
             steps{
@@ -41,41 +33,86 @@ pipeline
             }
         }
         
-        stage("Run regression test cases on QA"){
-            steps{
-                echo("Run test cases on QA")
+        
+        
+                
+        stage('Regression Automation Tests') {
+            steps {
+                catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+                    git 'https://github.com/dpurnarao/OpenCartApp_Aug2025.git'
+                    bat "mvn clean test -Dsurefire.suiteXmlFiles=src/test/resources/testrunners/testng_sanitytest.xml -Denv=qa"
+                    
+                }
+            }
+        }
+                
+     
+        stage('Publish Allure Reports') {
+           steps {
+                script {
+                    allure([
+                        includeProperties: false,
+                        jdk: '',
+                        properties: [],
+                        reportBuildPolicy: 'ALWAYS',
+                        results: [[path: '/allure-results']]
+                    ])
+                }
             }
         }
         
-        stage("Deploy to stage environment "){
+        
+        stage('Publish ChainTest Report'){
             steps{
-                echo("deploy to stage done")
+                     publishHTML([allowMissing: false,
+                                  alwaysLinkToLastBuild: false, 
+                                  keepAll: true, 
+                                  reportDir: 'target/chaintest', 
+                                  reportFiles: 'Index.html', 
+                                  reportName: 'HTML Regression ChainTest Report', 
+                                  reportTitles: ''])
             }
         }
         
-        stage("Run sanity test cases on Stage "){
+        stage("Deploy to Stage"){
             steps{
-                echo("run sanity tests on stage")
+                echo("deploy to stage")
+            
             }
         }
         
-        stage("Deploy to UAT environment "){
-            steps{
-                echo("deploy to UAT done")
+        stage('Sanity Automation Test') {
+            steps {
+                ccatchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+                    git 'https://github.com/dpurnarao/OpenCartApp_Aug2025.git'
+                    bat "mvn clean test -Dsurefire.suiteXmlFiles=src/test/resources/testrunners/testng_sanitytest.xml -Denv=stage"
+                    
+                    
+                }
             }
         }
         
-        stage("Run sanity test cases on UAT "){
+        
+        
+        stage('Publish sanity ChainTest Report'){
             steps{
-                echo("run sanity tests on UAT")
+                     publishHTML([allowMissing: false,
+                                  alwaysLinkToLastBuild: false, 
+                                  keepAll: true, 
+                                  reportDir: 'target/chaintest', 
+                                  reportFiles: 'Index.html', 
+                                  reportName: 'HTML Sanity ChainTest Report', 
+                                  reportTitles: ''])
             }
         }
-   
+        
+        
         stage("Deploy to PROD"){
             steps{
                 echo("deploy to PROD")
             }
         }
-       
+        
+        
     }
 }
