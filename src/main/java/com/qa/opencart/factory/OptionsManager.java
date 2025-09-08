@@ -29,6 +29,9 @@ public class OptionsManager {
 			System.out.println("--- Chrome browser running in INCOGNITO mode----------");
 			co.addArguments("--incognito");
 		}
+		if(Boolean.parseBoolean(prop.getProperty("remote"))) {
+			co.setCapability("browserName", "chrome");
+		}
 		return co;
 	}
 	//Firefox browser options
@@ -43,11 +46,14 @@ public class OptionsManager {
 			System.out.println("--- Firefox browser running in INCOGNITO mode----------");
 			fo.addArguments("--incognito");
 		}
+		if(Boolean.parseBoolean(prop.getProperty("remote"))) {
+			fo.setCapability("browserName", "firefox");
+		}
 		return fo;
 	}
 	
 	// Edge browser options	
-		public EdgeOptions EdgeOptions() {
+		public EdgeOptions getEdgeOptions() {
 			EdgeOptions eo = new EdgeOptions();
 			if(Boolean.parseBoolean(prop.getProperty("headless"))) {
 				System.out.println("--- Edge browser running in headless mode----------");
@@ -57,6 +63,9 @@ public class OptionsManager {
 			if(Boolean.parseBoolean(prop.getProperty("incognito"))) {
 				System.out.println("--- Edge browser running in INCOGNITO mode----------");
 				eo.addArguments("--inprivate");
+			}
+			if(Boolean.parseBoolean(prop.getProperty("remote"))) {
+				eo.setCapability("browserName", "edge");
 			}
 			return eo;
 		}

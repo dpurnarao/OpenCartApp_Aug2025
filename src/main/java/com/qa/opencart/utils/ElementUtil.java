@@ -22,9 +22,10 @@ import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.aventstack.chaintest.plugins.ChainTestListener;
+import com.qa.opencart.exceptions.FrameworkException;
 import com.qa.opencart.factory.DriverFactory;
 
-import Se01_SeleniumSessions.Se09_FrameworkException;
+//import Se01_SeleniumSessions.Se09_FrameworkException;
 import io.qameta.allure.Step;
 
 public class ElementUtil {
@@ -241,7 +242,8 @@ public class ElementUtil {
 			
 			if(totalSuggestions == 0) {
 				System.out.println("No suggestions found ...");
-				throw new Se09_FrameworkException("No suggestios FOUND...");
+				//throw new Se09_FrameworkException("No suggestios FOUND...");
+				throw new FrameworkException("No suggestios FOUND...");
 			}
 			
 			for(WebElement e: suggList) {

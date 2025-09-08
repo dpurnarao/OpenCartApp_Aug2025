@@ -118,7 +118,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.8.9</version>
+				<version>3.8.1</version>
 				<configuration>
 					<source>11</source>
 					<target>11</target>
@@ -136,9 +136,9 @@
 					<reuseForks>true</reuseForks>
 
 					<suiteXmlFiles>
-						<!-- <suiteXmlFile>
-							src/test/resources/testrunners/testng.xml</suiteXmlFile> -->
-							<suiteXmlFile>${suiteXmlFile}</suiteXmlFile>
+						<suiteXmlFile>
+							src/test/resources/testrunners/testng-sanitytest.xml</suiteXmlFile> 
+							<!-- <suiteXmlFile>${suiteXmlFile}</suiteXmlFile> -->
 					</suiteXmlFiles>
 					
 					<argLine> -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar" </argLine>
