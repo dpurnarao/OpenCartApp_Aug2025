@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<!-- TestNG XML customised as per the test execution-->
+
+<!--  Parallel execution will be achieved with TestNG.if the thread-cound and parallel is not configured then the test will be
+      executed sequentially. Parallel execution will be achieved by adding parallel="tests" and thread-count="5" parameters
+      at suite level.
+      Three browser instances will be opened same time and the tests are executed at
+       same during the parallel mode -->
+
+<!-- Parallel test execution configuration -->
+<!-- suite is overall test suite name -->
+<suite name="Opencart App Test sanity test suite" verbose="3" thread-count="5" parallel="tests">
+
+<!-- Listeners for ChainTest reports and logging and Allure reports & retryTest-->
+     <listeners>
+	<!-- 	<listener class-name="com.aventstack.chaintest.plugins.ChainTestListene" />	-->
+		<listener class-name="com.qa.opencart.listeners.TestAllureListener" />	
+	<!--<listener class-name="com.qa.opencart.listeners.AnnotationTransformer"/>	-->	
+	 </listeners>
+    
+	<!-- test block 1: LoginPageTest-->
+	<test name="LoginPage Test_chrome_126.0" verbose="2">
+        <parameter name="browser" value="chrome" /> 
+        <parameter name="browserversion" value="126.0" />
+        <parameter name="testname" value="Login page test" />
+		<classes>
+			<class name="com.qa.opencart.tests.LoginPageTest" />
+		</classes>
+	</test>
+	
+	<test name="LoginPage Test_chrome_123.0" verbose="2">
+        <parameter name="browser" value="chrome" /> 
+        <parameter name="browserversion" value="123.0" />
+        <parameter name="testname" value="Login page test" />
+		<classes>
+			<class name="com.qa.opencart.tests.LoginPageTest" />
+		</classes>
+	</test>
+
+	<!-- test block 2: AccountsPageTest-->
+	<test name="Accounts Page Test_firefox_124.0" verbose="2">
+        <parameter name="browser" value="firefox" />
+        <parameter name="browserversion" value="124.0" />
+        <parameter name="testname" value="Accounts page test" />
+		<classes>
+			<class name="com.qa.opencart.tests.AccountsPageTest" />
+		</classes>
+	</test> 
+	
+	<test name="Accounts Page Test_firefox_105.0" verbose="2">
+        <parameter name="browser" value="firefox" />
+        <parameter name="browserversion" value="105.0" />
+        <parameter name="testname" value="Accounts page test" />
+		<classes>
+			<class name="com.qa.opencart.tests.AccountsPageTest" />
+		</classes>
+	</test> 
+
+	
+
+</suite> 

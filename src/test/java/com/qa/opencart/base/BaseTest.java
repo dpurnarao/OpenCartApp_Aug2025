@@ -64,7 +64,7 @@ public class BaseTest {
 	} */
 	
 	//browser setUp() that the browser selected based on the test in the testng.xml -- for cross browser testing
-	@Parameters({"browser"})  //browser value is passed from testng.xml
+/*	@Parameters({"browser"})  //browser value is passed from testng.xml
 	@BeforeTest
 	public void setUp(String browserName) {
 		df = new DriverFactory(); // object of the DriverFactory class
@@ -73,6 +73,28 @@ public class BaseTest {
 		
 		if(browserName != null) { //browserName is passed from testng.xml
 			prop.setProperty("browser", browserName);
+		}
+		
+		//driver = df.initDriver("chrome"); // session id is same as driverFactory
+		driver = df.initDriver(prop); // call by reference ... login page
+		
+		loginPage = new LoginPage(driver); //login page seession is also same
+		
+	} */
+	
+	// browser setu that supports parallel testing 
+	@Description("initialise the driver and properties")
+	@Parameters({"browser", "browserversion", "testname"})  //browser value is passed from testng.xml
+	@BeforeTest
+	public void setUp(String browserName, String browserversion, String testname) {
+		df = new DriverFactory(); // object of the DriverFactory class
+		
+		prop = df.initProp(); // prop is a holding parameter
+		
+		if(browserName != null) { //browserName is passed from testng.xml
+			prop.setProperty("browser", browserName);
+			prop.setProperty("browserversion", browserversion);
+			prop.setProperty("testname", testname);
 		}
 		
 		//driver = df.initDriver("chrome"); // session id is same as driverFactory
