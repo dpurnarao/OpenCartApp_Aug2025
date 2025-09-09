@@ -137,7 +137,7 @@
 
 					<suiteXmlFiles>
 						<suiteXmlFile>
-							src/test/resources/testrunners/testng-sanitytest.xml</suiteXmlFile> 
+							src/test/resources/testrunners/testng-selenoid.xml</suiteXmlFile> 
 							<!-- <suiteXmlFile>${suiteXmlFile}</suiteXmlFile> -->
 					</suiteXmlFiles>
 					
