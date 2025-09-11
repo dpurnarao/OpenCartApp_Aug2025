@@ -40,7 +40,7 @@ pipeline
             steps {
                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
                     git 'https://github.com/dpurnarao/OpenCartApp_Aug2025.git'
-                    bat "mvn clean test -Dsurefire.suiteXmlFiles=src/test/resources/testrunners/testng_sanitytest.xml -Denv=qa"
+                    bat "mvn clean test -Dsurefire.suiteXmlFiles=src/test/resources/testrunners/testng-selenoid.xml -Denv=qa"
                     
                 }
             }
@@ -85,7 +85,7 @@ pipeline
             steps {
                 ccatchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
                     git 'https://github.com/dpurnarao/OpenCartApp_Aug2025.git'
-                    bat "mvn clean test -Dsurefire.suiteXmlFiles=src/test/resources/testrunners/testng_sanitytest.xml -Denv=stage"
+                    bat "mvn clean test -Dsurefire.suiteXmlFiles=src/test/resources/testrunners/testng-selenoid.xml -Denv=stage"
                     
                     
                 }
