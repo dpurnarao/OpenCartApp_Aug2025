@@ -19,9 +19,16 @@
 		<maven.compiler.target>11</maven.compiler.target>
 		<selenium.version>4.22.0</selenium.version> 
 		<maven.compiler.release>11</maven.compiler.release>-->
-		<aspectj.version>1.9.19</aspectj.version>	
-			
+		<aspectj.version>1.9.19</aspectj.version>				
 	</properties>
+ <!-- jars will be moved to the nexus url below-->
+	<distributionManagement>
+		<snapshotRepository>
+			<id>nexus-snapshots</id>
+			<url>http://localhost:8081/repository/maven-snapshots/</url>
+		</snapshotRepository>
+	</distributionManagement>
+	
 
 	<dependencies>
 		<dependency>
@@ -38,7 +45,7 @@
 		</dependency>
 
 
-	<!-- -	<dependency>
+		<!-- -	<dependency>
 			<groupId>MavenProjectJAN2025</groupId>
 			<artifactId>MavenProjectJAN2025</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
@@ -75,21 +82,21 @@
 			<artifactId>openxml4j</artifactId>
 			<version>1.0-beta</version>
 		</dependency>
-<!-- 	CSV file reader dependency : download from maven -->
+		<!-- 	CSV file reader dependency : download from maven -->
 		<dependency>
 			<groupId>com.opencsv</groupId>
 			<artifactId>opencsv</artifactId>
 			<version>5.10</version>
 		</dependency>
-		
-<!-- dependecy for ChainTestReport-->
+
+		<!-- dependecy for ChainTestReport-->
 		<dependency>
 			<groupId>com.aventstack</groupId>
 			<artifactId>chaintest-testng</artifactId>
 			<version>1.0.12</version>
 		</dependency>
-		
-	<!-- dependency for Allurereports-->
+
+		<!-- dependency for Allurereports-->
 		<dependency>
 			<groupId>io.qameta.allure</groupId>
 			<artifactId>allure-testng</artifactId>
@@ -101,7 +108,7 @@
 			<artifactId>aspectjweaver</artifactId>
 			<version>${aspectj.version}</version>
 		</dependency>
-<!-- dependency for log4J logging-->
+		<!-- dependency for log4J logging-->
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-core</artifactId>
@@ -134,9 +141,10 @@
 				<configuration>
 					<forkCount>3</forkCount>
 					<reuseForks>true</reuseForks>
-
-					<suiteXmlFiles>						
-							<!-- <suiteXmlFile>src/test/resources/testrunners/testng-selenoid.xml</suiteXmlFile>	-->					
+					
+<!-- suiteXmlFile is configured in Jenkinsfile-->
+					<suiteXmlFiles>
+						<!-- <suiteXmlFile>src/test/resources/testrunners/testng-selenoid.xml</suiteXmlFile>	-->					
 							     <suiteXmlFile>${suiteXmlFile}</suiteXmlFile>
 					</suiteXmlFiles>
 					
@@ -152,10 +160,39 @@
 				</dependencies>
 
 			</plugin>
-		</plugins>
-		
+			<!-- plugins to create FAT jars-->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<version>3.3.0</version>
+				<configuration>
+					<descriptorRefs>
+						<descriptorRef>jar-with-dependencies</descriptorRef>
+					</descriptorRefs>
+				</configuration>
+				
+				<executions>
+					<execution>
+						<id>make-assembly</id>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+                         </goals>
+					</execution>
+				</executions>
+			</plugin>
+			<!-- Maven deployment plugin .... deploys the jar and fat jars to the nexus artifactory-->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-deploy-plugin</artifactId>
+				<version>2.8.2</version>
+			</plugin>
 
-	 <!-- 	<pluginManagement>
+
+		</plugins>
+
+
+		<!-- 	<pluginManagement>
 			<plugins>
 				This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.
 				<plugin>
